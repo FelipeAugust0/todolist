@@ -55,6 +55,29 @@ export default function App(){
         <TodoList todos ={todos} removeTask={removeTask}/>
       </div>
     </div>
-  )
+  );
+};
 
+const styles = {
+  container: {
+    maxWidth: "600px",
+    magin: "50px auto",
+    textAlign: "center",
+    fontFamily: "Arial, sans-serif"
+  },
+  inputdh: {
+    padding: "10px",
+    witdth: "39%",
+    marginRight: "5px",
+    borderRadius: "10px",
+  },
+  input: {
+    padding: "10px",
+    width: "70%",
+    marginRight: "5px",
+  },
+  button: {
+    padding: "10px",
+    cursor: "pointer"
+  }
 }
