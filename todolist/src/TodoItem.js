@@ -3,8 +3,8 @@ import React from "react";
 export default function TodoItem({ todo, removeTask }) {
   return (
     <li>
-      {todo.date} -- : {todo.text}
-      <button onClick={() => removeTask(todo.id)}>X</button>
+      {todo.date} -- {todo.hora} : {todo.text}
+      <button style={styles.button} onClick={() => removeTask(todo.id)}>X</button>
     </li>
   );
 }

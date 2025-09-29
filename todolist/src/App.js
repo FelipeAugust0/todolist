@@ -3,6 +3,9 @@ import TodoList from "./TodoList";
 
 // Componente principal
 export default function App() {
+  const [visivel, setVisivel] = useState(true);
+  const [invisivel, setInvisivel] = useState(false);
+
   // Variavel de estado que armazena todas as atividades
   const [todos, setTodos] = useState([]); // Indica um array
 
@@ -38,6 +41,11 @@ export default function App() {
     setTodos(todos.filter((todo) => todo.id !== id));
   };
 
+  // Funçao que mostrs ou esconde a lista
+  const showList = () => {
+    setVisivel(!visivel);
+  };
+
   return (
     <div style={styles.container}>
       <h1>Minha ToDo List</h1>
@@ -49,7 +57,12 @@ export default function App() {
           onChange={(e) => setNewTask(e.target.value)}
           style={styles.input}
         />
-        <button onClick={addTask}>Adicionar</button>
+        <button onClick={addTask} style={styles.button}>
+          Adicionar
+        </button>
+        <button onClick={showList} style={styles.button}>
+          Lista
+        </button>
       </div>
 
       <div magitTop="20">
@@ -58,7 +71,7 @@ export default function App() {
           placeholder=""
           value={hora}
           onChange={(e) => setHora(e.target.value)}
-          style = {styles.inputdh}
+          style={styles.inputdh}
         />
 
         <input
@@ -66,12 +79,20 @@ export default function App() {
           placeholder=""
           value={dataDia}
           onChange={(e) => setDatadia(e.target.value)}
-          style = {styles.inputdh}
+          style={styles.inputdh}
         />
       </div>
 
-      <div>
-        <TodoList todos={todos} removeTask={removeTask} />
+      <div
+        style={{
+          height: "500px",
+          overflowY: "scroll",
+          border: "1px solid #ccc",
+          padding: "10px",
+          marginTop: "20px",
+        }}
+      >
+        {visivel && <TodoList todos={todos} removeTask={removeTask} />}
       </div>
     </div>
   );
